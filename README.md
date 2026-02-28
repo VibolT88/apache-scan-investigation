@@ -22,21 +22,7 @@ Web servers produce access logs that record incoming HTTP requests. These logs c
 ___
 ### Step 1 — Determine Scope of Log
 
-Check total number of lines in the log:
+Here’s a command to count lines:
 
 ```bash
 wc -l acunetix.txt
-
-
-
----
-
-### 🔹 Step 2 — Log Format
-
-```markdown
-### Step 2 — Inspect Log Format
-
-Check the first few lines to understand log structure:
-
-```bash
-head -n 5 acunetix.txt
