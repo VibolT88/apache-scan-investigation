@@ -1,28 +1,42 @@
 # Apache Web Log Investigattion
-
+This project demonstrates a security-focused investigation of Apache access logs to identify suspicious scanning activity and potential exploit attempts.
 ---
 
-## Incident Overview
-This project simulates a SOC Level 1 investigation of suspicious activity identified within Apache web server access logs. During log review, a high volume of HTTP requests originating from a single source IP address was observed, including an unusually large number of POST requests and exploit-style payload patterns.
-The objective of this investigation was to determine whether the activity represented automated vulnerability scanning and to assess whether any signs of successful compromise were present.
+## Objective
+Simulate a SOC Level 1 analyst’s workflow analyzing Apache access logs to:
+- Identify anomalous request patterns
+- Quantify HTTP methods and status codes
+- Detect potential exploit behavior
+- Assess whether any successful compromise occurred
+
+## Background
+
+Web servers produce access logs that record incoming HTTP requests. These logs can reveal normal user behavior as well as malicious activity (scanning, exploitation attempts, enumeration phases). This lab uses a real Apache access log sample to simulate a threat investigation.
+
 
 ## Environment
 
 - Analysis Platform: Ubuntu
 - Log Type: Apache access logs
 - Tools Used: grep, awk, sort, uniq, wc
+___
+### Step 1 — Determine Scope of Log
 
-## Investigation Objectives
+Check total number of lines in the log:
 
-- Identify suspicious traffic patterns
-- Determine whether the activity was automated scanning
-- Detect possible exploit attempts
-- Assess whether any successful compromise occurred
+```bash
+wc -l acunetix.txt
 
-## Key Findings
 
-- Total log entries analyzed: 6,538
-- All traffic originated from a single source
-- Unusually high POST volume observed
-- Detected 4 Shellshock-style payload attempts
-- No confirmed evidence of compromise based on access logs
+
+---
+
+### 🔹 Step 2 — Log Format
+
+```markdown
+### Step 2 — Inspect Log Format
+
+Check the first few lines to understand log structure:
+
+```bash
+head -n 5 acunetix.txt
