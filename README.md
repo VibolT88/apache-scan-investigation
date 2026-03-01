@@ -77,3 +77,18 @@ Viewing the log for start to finish (how long did it take).
 sort -k4 acunetix.txt | head -1
 sort -k4 acunetox.txt | tail -1
 ```
+---
+## What I learned
+
+This project helped me understand that effective log analysis goes far beyond running simple commands like grep. While filtering logs is important, meaningful investigation requires organizing and structuring the data to build a clear timeline of adversary activity.
+One of the biggest takeaways was learning to focus on behavior patterns rather than isolated log entries. For example:
+Repeated ../ sequences indicated potential directory traversal attempts.
+<script> tags suggested possible cross-site scripting (XSS) probes.
+SQL logic operators such as ' OR 1=1 -- pointed toward SQL injection attempts.
+I also observed that high-frequency requests within short time intervals often signal automated scanning tools rather than legitimate user activity. Additionally, analyzing user-agent strings provided insight into whether the traffic was coming from normal browsers or automated frameworks.
+This project reinforced the importance of:
+Pattern recognition over single-event analysis
+Building timelines to understand attacker movement
+Differentiating between normal and abnormal behavior
+Thinking like an analyst, not just a command-line operator
+Overall, this experience strengthened my understanding of how web-based attacks appear in real log data and how to systematically investigate suspicious activity.
