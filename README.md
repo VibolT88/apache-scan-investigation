@@ -18,6 +18,7 @@ Web servers produce access logs that record incoming HTTP requests. These logs c
 
 - Analysis Platform: Ubuntu
 - Log Type: Apache access logs
+- DVWA lab enviorment
 - Tools Used: grep, awk, sort, uniq, wc
 ___
 ### Step 1 — Determine Scope of Log
