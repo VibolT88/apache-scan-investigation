@@ -88,11 +88,13 @@ Viewing the log for start to finish (how long did it take).
 sort -k4 acunetix.txt | head -1
 sort -k4 acunetox.txt | tail -1
 ```
-
-
-Payload found: 
+![Timeline](screenshots/09_timeline_analysis.png)
+---
+### Payload found: 
 ![Payload Examples](screenshots/07_attack_payload_examples.png)
 ![More Payload Evidence](screenshots/08_attack_payload_examples.png)
+
+
 ---
 ## What I learned
 
