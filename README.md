@@ -30,6 +30,7 @@ Here’s a command to count lines:
 wc -l acunetix.txt
 head -n 3 acunetix.txt
 ```
+![Dataset Overview](screenshots/01_dataset_overview.png)
 ---
 ### Step 2 — IP Identification
 
@@ -38,7 +39,7 @@ I want to preview what source IP address is presented. Count and sort from great
 ```bash
 awk '{print $1}' acunetix.txt | sort | uniq -c | sort -nr | head
 ```
-
+![Top Source IP](screenshots/02_top_source_ip_analysis.png)
 ---
 ### Step 3 — HTTP Method Distribution
 
@@ -48,6 +49,7 @@ After viewing the I.P address, I've looked up the HTTP Methods with in the logs 
 ```bash
 awk '{ print $6}' acunetix.txt | sort | uniq -c | sort -nr
 ```
+![HTTP Methods](screenshots/03_http_method_distribution.png)
 ---
 ### Step 4 — Endpoint Targeting
 
@@ -57,6 +59,7 @@ want to view if there is a specific target area the adeversaries are trying to t
 ```bash
 awk '{ print $7}' acunetix.txt | sort | uniq -c | sort -nr
 ```
+![Endpoint Targeting](screenshots/04_endpoint_targeting_analysis.png)
 ---
 ### Step 5 — Investigating Status Codes
 Now Im investigating status code to track adversarie movement.
@@ -64,6 +67,7 @@ Now Im investigating status code to track adversarie movement.
 ```bash
 awk '{print $9}' acunetix.txt | sort | uniq -c | sort -nr
 ```
+![Status Codes](screenshots/05_status_code_distribution.png)
 ---
 ### Step 6 — Targeting 500 error breakdown
 
@@ -73,7 +77,8 @@ This suggests insufficient input validation and highlights a potentially exploit
 ```bash
 awk '$9 == 500 {print $7}' acunetix.txt | sort | uniq -c | sort -nr | head
 ```
-Payloads found:
+![500 Errors](screenshots/06_500_error_endpoint_analysis.png)
+
 
 ---
 ### Step 7 — Timeline Analysis
@@ -83,6 +88,11 @@ Viewing the log for start to finish (how long did it take).
 sort -k4 acunetix.txt | head -1
 sort -k4 acunetox.txt | tail -1
 ```
+![Timeline](screenshots/09_timeline_analysis.png)
+
+Payload found: 
+![Payload Examples](screenshots/07_attack_payload_examples.png)
+![More Payload Evidence](screenshots/08_attack_payload_examples.png)
 ---
 ## What I learned
 
