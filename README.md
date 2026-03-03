@@ -23,10 +23,12 @@ Web servers produce access logs that record incoming HTTP requests. These logs c
 ___
 ### Step 1 — Determine Scope of Log
 
+I wanted to determine how large the file and it is structured.
 Here’s a command to count lines:
 
 ```bash
 wc -l acunetix.txt
+head -n 3 acunetix.txt
 ```
 ---
 ### Step 2 — IP Identification
@@ -40,7 +42,8 @@ awk '{print $1}' acunetix.txt | sort | uniq -c | sort -nr | head
 ---
 ### Step 3 — HTTP Method Distribution
 
-Demonstrates behavioral pattern analysis
+After viewing the I.P address, I've looked up the HTTP Methods with in the logs to see if there are any irregular patterns.
+
 
 ```bash
 awk '{ print $6}' acunetix.txt | sort | uniq -c | sort -nr
@@ -48,21 +51,24 @@ awk '{ print $6}' acunetix.txt | sort | uniq -c | sort -nr
 ---
 ### Step 4 — Endpoint Targeting
 
-Show the attack surface what the adversaries are trying to target.
+want to view if there is a specific target area the adeversaries are trying to target.
+
 
 ```bash
 awk '{ print $7}' acunetix.txt | sort | uniq -c | sort -nr
 ```
 ---
 ### Step 5 — Investigating Status Codes
-investigating status code to track adversarie movement.
+Now Im investigating status code to track adversarie movement.
 
 ```bash
 awk '{print $9}' acunetix.txt | sort | uniq -c | sort -nr
 ```
 ---
 ### Step 6 — Targeting 500 error breakdown
-viewing 500 error codes to if I can find any payloads
+
+Analyzing 500 error responses, I want to view any endpoints that generate the highest volume of server error under malicious input conditions. 
+This suggests insufficient input validation and highlights a potentially exploitable attack surface.
 
 ```bash
 awk '$9 == 500 {print $7}' acunetix.txt | sort | uniq -c | sort -nr | head
